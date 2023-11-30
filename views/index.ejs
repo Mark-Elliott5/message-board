@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %></title>
+    <link rel="stylesheet" href="/stylesheets/style.css" />
+  </head>
+  <body>
+    <h1><%= title %></h1>
+    <div id="message-board-wrapper">
+      <% for( let i = 0; i < messages.length; i++ ) { %>
+      <div>
+        <p><%= messages[i].user %>: <%= messages[i].text %></p>
+        <div>
+          <span class="time-distance">
+            <%= formatDate(messages[i].added) %> ago
+          </span>
+          <span class="date italic faded">
+            (<%=messages[i].added.getMonth()+1 %>/<%=
+            messages[i].added.getDate() %>/<%= messages[i].added.getFullYear()
+            %>)
+          </span>
+        </div>
+      </div>
+      <% } %>
+    </div>
+  </body>
+</html>
