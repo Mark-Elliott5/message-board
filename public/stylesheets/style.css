@@ -1,3 +1,8 @@
+html, body {
+  background-color: black;
+  color: white;
+}
+
 body {
   padding: 50px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
@@ -5,4 +10,68 @@ body {
 
 a {
   color: #00B7FF;
+}
+
+.italic {
+  font-style: italic;
+}
+
+.bold {
+  font-weight: bold;
+}
+
+/* .normal-text-styles {
+  font-weight: normal;
+  font-style: normal;
+} */
+
+.faded {
+  opacity: 50%;
+}
+
+.twelve-px-margin {
+  margin: 12px 0px;
+}
+
+.twelve-px-margin-left {
+  margin-left: 12px;
+}
+
+.twelve-px-padding-bottom {
+  padding-bottom: 12px;
+}
+
+.overflow-wrap {
+  overflow-wrap: break-word;
+}
+
+.border-bottom {
+  border-bottom: 1px solid gray;
+}
+
+.border-radius {
+  border-radius: 8px;
+}
+
+.center {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.flex {
+  display: flex;
+}
+
+.column {
+  flex-direction: column;
+}
+
+.percent-width {
+  width: 70%;
+}
+
+#message-form > * {
+  margin: 6px;
 }

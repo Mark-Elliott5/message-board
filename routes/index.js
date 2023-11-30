@@ -1,17 +1,20 @@
 const { formatDistanceToNow } = require('date-fns');
-var express = require('express');
-var router = express.Router();
+const Filter = require('bad-words');
+const express = require('express');
+const router = express.Router();
+
+const filter = new Filter();
 
 const messages = [
   {
     text: 'Hi there!',
     user: 'Amando',
-    added: new Date('2023-11-30T10:30:23'),
+    added: new Date('2021-03-06T20:15:55'),
   },
   {
     text: 'Hello World!',
     user: 'Charles',
-    added: new Date('2021-03-06T20:15:55'),
+    added: new Date('2023-11-30T10:30:23'),
   },
 ];
 
@@ -19,16 +22,14 @@ function addMessage(message) {
   messages.push(message);
 }
 
-function renderIndex(req, res, next) {
+/* GET home page. */
+router.get('/', (req, res, next) => {
   res.render('index', {
     title: 'Message Board',
     messages: messages,
     formatDate: formatDistanceToNow,
   });
-}
-
-/* GET home page. */
-router.get('/', renderIndex);
+});
 
 router.get('/new', (req, res, next) => {
   res.render('form', {
@@ -38,7 +39,13 @@ router.get('/new', (req, res, next) => {
 
 router.post('/new', (req, res, next) => {
   const currentTime = new Date();
-  const newMessage = Object.assign(req.body, { added: currentTime });
+  const filteredText = filter.clean(req.body.text);
+  const filteredUser = filter.clean(req.body.user);
+  const newMessage = {
+    text: filteredText,
+    user: filteredUser,
+    added: currentTime,
+  };
   addMessage(newMessage);
   res.redirect('/');
 });

@@ -6,12 +6,15 @@
   </head>
   <body>
     <h1><%= title %></h1>
-    <div id="message-board-wrapper">
+    <div id="message-board-wrapper" class="overflow-wrap">
       <% for( let i = 0; i < messages.length; i++ ) { %>
-      <div>
-        <p><%= messages[i].user %>: <%= messages[i].text %></p>
+      <div
+        class="message border-bottom border-radius-8 twelve-px-padding-bottom"
+      >
+        <p class="bold"><%= messages[i].user %>:</p>
+        <p class="twelve-px-margin-left"><%= messages[i].text %></p>
         <div>
-          <span class="time-distance">
+          <span class="time-distance faded twelve-px-margin-left">
             <%= formatDate(messages[i].added) %> ago
           </span>
           <span class="date italic faded">
@@ -23,5 +26,10 @@
       </div>
       <% } %>
     </div>
+    <a href="/new"
+      ><button class="twelve-px-margin" id="new-message">
+        Add new message
+      </button></a
+    >
   </body>
 </html>

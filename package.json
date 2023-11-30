@@ -8,6 +8,7 @@
     "serverstart": "DEBUG=express-locallibrary-tutorial:* npm run devstart"
   },
   "dependencies": {
+    "bad-words": "^3.0.4",
     "cookie-parser": "~1.4.4",
     "date-fns": "^2.30.0",
     "debug": "~2.6.9",
