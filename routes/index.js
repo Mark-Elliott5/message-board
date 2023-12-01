@@ -39,8 +39,12 @@ router.get('/new', (req, res, next) => {
 
 router.post('/new', (req, res, next) => {
   const currentTime = new Date();
-  const filteredText = filter.clean(req.body.text);
-  const filteredUser = filter.clean(req.body.user);
+  const filteredText = req.body.text ? filter.clean(req.body.text) : '';
+  const filteredUser = req.body.user ? filter.clean(req.body.user) : '';
+  if (filteredText === '' || filteredUser === '') {
+    res.redirect('/');
+    return;
+  }
   const newMessage = {
     text: filteredText,
     user: filteredUser,
